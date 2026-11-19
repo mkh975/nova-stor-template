@@ -1,960 +1,514 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- [MODIFIABLE] Titre de l'onglet navigateur -->
-    <title>NOVA STUDIO — Solutions Digitales & Boutique Haute Conversion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        accent: {
-                            DEFAULT: 'var(--accent-color, #6366f1)',
-                            hover: 'var(--accent-hover, #4f46e5)',
-                            soft: 'var(--accent-soft, rgba(99, 102, 241, 0.14))',
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVA STUDIO — Solutions Digitales & Boutique</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: { 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+            surface: { 900: '#090b12', 800: '#101422', 700: '#181e33' }
+          }
         }
-    </script>
-    <style>
-        /* [MODIFIABLE] Couleur principale par défaut du site */
-        :root {
-            --accent-color: #6366f1;
-            --accent-hover: #4f46e5;
-            --accent-soft: rgba(99, 102, 241, 0.14);
-        }
-
-        body {
-            background-color: #09090b;
-            color: #fafafa;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .glass-card {
-            background: rgba(24, 24, 27, 0.68);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-card-hover {
-            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .glass-card-hover:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px -5px var(--accent-soft);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            transition: all 0.2s ease;
-        }
-
-        .btn-accent:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px -5px var(--accent-soft);
-        }
-
-        .text-accent {
-            color: var(--accent-color);
-        }
-
-        .bg-accent-soft {
-            background-color: var(--accent-soft);
-        }
-
-        .border-accent {
-            border-color: var(--accent-color);
-        }
-
-        .hero-glow {
-            background: radial-gradient(circle at 50% 0%, var(--accent-soft) 0%, rgba(9, 9, 11, 0) 65%);
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
-            opacity: 0;
-        }
-
-        .faq-item.active .faq-content {
-            max-height: 260px;
-            opacity: 1;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-            color: var(--accent-color);
-        }
-    </style>
+      }
+    };
+  </script>
 </head>
-<body class="antialiased selection:bg-indigo-500/30 selection:text-white">
+<body class="bg-surface-900 text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- BARRE DE NAVIGATION STICKY -->
-    <header class="sticky top-0 z-40 w-full border-b border-white/10 bg-zinc-950/85 backdrop-blur-xl">
-        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-            <a href="#" class="flex items-center gap-2.5 group">
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl btn-accent text-white font-bold shadow-lg">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <!-- [MODIFIABLE] Nom de marque affiché dans le header -->
-                <span class="brand-name text-lg font-extrabold tracking-tight text-white">NOVA STUDIO</span>
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-surface-900/90 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
+      <a href="#top" class="flex items-center gap-2 text-lg font-extrabold tracking-tight text-white">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600 text-sm">⚡</span>
+        <span id="site-brand">NOVA STUDIO</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
+        <a href="#avantages" class="hover:text-white transition">Avantages</a>
+        <a href="#offres" class="hover:text-white transition">Offres & Tarifs</a>
+        <a href="#avis" class="hover:text-white transition">Avis Clients</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button type="button" id="open-cart-btn" class="relative inline-flex items-center gap-2 rounded-xl border border-white/15 bg-surface-800 px-3.5 py-2 text-sm font-semibold text-white hover:border-brand-400 hover:bg-surface-700 transition cursor-pointer">
+          <span>Panier</span>
+          <span id="cart-count" class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-600 px-1.5 text-xs font-bold text-white">0</span>
+        </button>
+        <a href="#commander" class="rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-500 transition">
+          Commander
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="top">
+    <section class="mx-auto max-w-6xl px-4 pt-12 pb-16">
+      <div class="grid items-center gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3.5 py-1.5 text-xs font-semibold text-brand-400">
+            <span class="h-2 w-2 rounded-full bg-brand-400"></span>
+            <span id="hero-badge">Collection Officielle • Performance & Design Sur-Mesure</span>
+          </div>
+
+          <h1 id="hero-title" class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
+            Transformez vos visiteurs en <span class="text-brand-400">clients fidèles</span> dès aujourd'hui.
+          </h1>
+
+          <p id="hero-subtitle" class="max-w-xl text-base text-slate-300 sm:text-lg leading-relaxed">
+            Une expérience digitale ultra-rapide, pensée pour maximiser vos ventes et crédibiliser votre marque instantanément sur mobile comme sur ordinateur.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <a href="#offres" class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-500 transition">
+              Découvrir nos offres →
             </a>
+            <a href="#commander" class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-surface-800 px-6 py-3.5 text-sm font-semibold text-white hover:bg-surface-700 transition">
+              Passer commande
+            </a>
+          </div>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-                <a href="#avantages" class="hover:text-white transition-colors">Avantages</a>
-                <a href="#offres" class="hover:text-white transition-colors">Offres & Tarifs</a>
-                <a href="#avis" class="hover:text-white transition-colors">Avis Clients</a>
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <button id="open-cart-btn" class="relative flex items-center gap-2 rounded-xl border border-white/10 bg-zinc-900/90 px-3.5 py-2 text-sm font-medium text-zinc-200 hover:border-white/25 transition-all">
-                    <svg class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span class="hidden sm:inline">Panier</span>
-                    <span id="cart-badge" class="flex h-5 min-w-[20px] items-center justify-center rounded-full btn-accent px-1.5 text-xs font-bold text-white">0</span>
-                </button>
-
-                <a href="#offres" class="hidden sm:inline-flex items-center justify-center rounded-xl btn-accent px-4 py-2.5 text-sm font-semibold text-white">
-                    Commander
-                </a>
-
-                <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden rounded-xl border border-white/10 bg-zinc-900 p-2.5 text-zinc-300 hover:text-white">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 text-xs font-medium text-slate-400">
+            <span>✓ Livraison rapide garantie</span>
+            <span>✓ 100% Optimisé Mobile</span>
+            <span>✓ Support dédié 7j/7</span>
+          </div>
         </div>
 
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden border-t border-white/10 bg-zinc-950 px-4 py-4 md:hidden">
-            <div class="flex flex-col space-y-3 text-sm font-medium text-zinc-300">
-                <a href="#avantages" class="mobile-link rounded-lg px-3 py-2 hover:bg-zinc-900 hover:text-white">Avantages</a>
-                <a href="#offres" class="mobile-link rounded-lg px-3 py-2 hover:bg-zinc-900 hover:text-white">Offres & Tarifs</a>
-                <a href="#avis" class="mobile-link rounded-lg px-3 py-2 hover:bg-zinc-900 hover:text-white">Avis Clients</a>
-                <a href="#faq" class="mobile-link rounded-lg px-3 py-2 hover:bg-zinc-900 hover:text-white">FAQ</a>
-                <a href="#contact" class="mobile-link rounded-xl btn-accent px-4 py-2.5 text-center font-semibold text-white">Démarrer maintenant</a>
+        <!-- Carte Produit / Offre Principale -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 shadow-2xl space-y-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-brand-400">Offre Phare</span>
+                <h2 id="featured-name" class="mt-1 text-xl font-bold text-white">Pack Signature Pro</h2>
+                <p class="text-xs text-slate-400">Best-seller • Prêt à l'emploi</p>
+              </div>
+              <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300 border border-emerald-500/30">
+                Disponible
+              </span>
             </div>
-        </div>
-    </header>
 
-    <!-- SECTION HERO (PROPOSITION DE VALEUR) -->
-    <section class="relative overflow-hidden hero-glow pt-14 pb-20 sm:pt-20 sm:pb-28">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-                <div class="lg:col-span-7 text-center lg:text-left">
-                    <!-- [MODIFIABLE] Badge supérieur -->
-                    <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-200 mb-6">
-                        <span class="h-2 w-2 rounded-full btn-accent animate-pulse"></span>
-                        <span>Collection Officielle • Performance & Design Sur-Mesure</span>
-                    </div>
-
-                    <!-- [MODIFIABLE] Titre principal (H1) -->
-                    <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-                        Transformez vos visiteurs en <span class="text-accent">clients fidèles</span> dès aujourd'hui.
-                    </h1>
-
-                    <!-- [MODIFIABLE] Sous-titre descriptif -->
-                    <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Une expérience digitale ultra-rapide, pensée pour maximiser vos ventes et crédibiliser votre marque instantanément sur mobile comme sur ordinateur.
-                    </p>
-
-                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#offres" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl btn-accent px-7 py-3.5 text-sm font-bold text-white shadow-lg">
-                            <span>Découvrir nos offres</span>
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/15 bg-zinc-900/70 px-7 py-3.5 text-sm font-semibold text-zinc-200 hover:bg-zinc-800 hover:text-white transition-all">
-                            Demander un devis gratuit
-                        </a>
-                    </div>
-
-                    <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-medium text-zinc-400">
-                        <div class="flex items-center gap-1.5">
-                            <svg class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>Livraison rapide garantie</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <svg class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>100% Optimisé Mobile</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <svg class="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>Support dédié 7j/7</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte Produit / Offre Mise en Avant -->
-                <div class="lg:col-span-5">
-                    <div class="glass-card relative rounded-3xl p-6 sm:p-7 shadow-2xl">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-accent-soft text-accent font-bold">
-                                    ★
-                                </div>
-                                <div>
-                                    <!-- [MODIFIABLE] Nom de l'offre mise en avant -->
-                                    <p class="text-sm font-bold text-white">Pack Signature Pro</p>
-                                    <p class="text-xs text-zinc-400">Best-seller • Prêt à l'emploi</p>
-                                </div>
-                            </div>
-                            <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-400 border border-emerald-500/20">
-                                Disponible
-                            </span>
-                        </div>
-
-                        <div class="my-6 rounded-2xl bg-zinc-950/90 border border-white/5 p-5">
-                            <div class="flex items-end justify-between mb-4">
-                                <div>
-                                    <p class="text-xs uppercase tracking-wider text-zinc-500 font-semibold">Impact moyen constaté</p>
-                                    <p class="text-3xl font-extrabold text-white mt-1">+148%</p>
-                                </div>
-                                <span class="rounded-lg bg-accent-soft px-2.5 py-1 text-xs font-bold text-accent">
-                                    Score 99/100
-                                </span>
-                            </div>
-                            <div class="grid grid-cols-7 items-end gap-2 h-24 pt-2">
-                                <div class="rounded-t-md bg-zinc-800 h-[35%]"></div>
-                                <div class="rounded-t-md bg-zinc-800 h-[48%]"></div>
-                                <div class="rounded-t-md bg-zinc-700 h-[55%]"></div>
-                                <div class="rounded-t-md bg-zinc-700 h-[68%]"></div>
-                                <div class="rounded-t-md bg-accent-soft border border-accent/40 h-[78%]"></div>
-                                <div class="rounded-t-md bg-accent-soft border border-accent/60 h-[88%]"></div>
-                                <div class="rounded-t-md btn-accent h-[100%]"></div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-4">
-                            <div>
-                                <span class="text-xs text-zinc-400 block">À partir de</span>
-                                <!-- [MODIFIABLE] Prix affiché sur la carte Hero -->
-                                <span class="text-2xl font-extrabold text-white">149 $</span>
-                            </div>
-                            <button onclick="addToCart('Pack Signature Pro', 149, 'Licence complète + Configuration')" class="flex-1 rounded-xl btn-accent px-5 py-3 text-sm font-bold text-white text-center">
-                                Ajouter au panier
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="rounded-xl border border-white/10 bg-surface-900 p-4 space-y-3">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>IMPACT MOYEN CONSTATÉ</span>
+                <span class="rounded bg-brand-500/20 px-2 py-0.5 font-semibold text-brand-400">Score 99/100</span>
+              </div>
+              <div class="text-3xl font-extrabold text-white">+148%</div>
+              <div class="grid grid-cols-5 items-end gap-2 pt-2 h-20">
+                <div class="h-6 rounded-t bg-brand-600/40"></div>
+                <div class="h-9 rounded-t bg-brand-600/55"></div>
+                <div class="h-12 rounded-t bg-brand-600/70"></div>
+                <div class="h-16 rounded-t bg-brand-600/85"></div>
+                <div class="h-20 rounded-t bg-brand-500"></div>
+              </div>
             </div>
+
+            <div class="flex items-center justify-between border-t border-white/10 pt-4">
+              <div>
+                <span class="block text-xs text-slate-400">À partir de</span>
+                <span id="featured-price-display" class="text-2xl font-extrabold text-white">149 $</span>
+              </div>
+              <button
+                type="button"
+                data-add-product
+                data-id="pack-signature"
+                data-name="Pack Signature Pro"
+                data-price="149"
+                class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-bold text-white hover:bg-brand-500 transition cursor-pointer"
+              >
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- CHIFFRES CLÉS -->
-    <section class="border-y border-white/10 bg-zinc-900/40 py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
-                <div>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">+450</p>
-                    <p class="mt-1 text-xs sm:text-sm font-medium text-zinc-400">Clients accompagnés</p>
-                </div>
-                <div>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-accent">4.9/5</p>
-                    <p class="mt-1 text-xs sm:text-sm font-medium text-zinc-400">Note moyenne vérifiée</p>
-                </div>
-                <div>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">&lt; 0.8s</p>
-                    <p class="mt-1 text-xs sm:text-sm font-medium text-zinc-400">Temps de chargement</p>
-                </div>
-                <div>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">24/7</p>
-                    <p class="mt-1 text-xs sm:text-sm font-medium text-zinc-400">Support client réactif</p>
-                </div>
-            </div>
+    <!-- Avantages -->
+    <section id="avantages" class="border-t border-white/10 bg-surface-800/40 py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-2xl mb-10">
+          <h2 class="text-3xl font-extrabold text-white">Pourquoi choisir notre solution</h2>
+          <p class="mt-2 text-sm text-slate-300">Conçue pour charger vite, guider l'utilisateur vers l'achat et s'adapter à votre activité.</p>
         </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-2">
+            <div class="text-xl">⚡</div>
+            <h3 class="text-lg font-bold text-white">Vitesse & Fluidité</h3>
+            <p class="text-sm text-slate-300">Navigation instantanée et mise en page claire pour éviter que vos visiteurs ne quittent la page.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-2">
+            <div class="text-xl">📱</div>
+            <h3 class="text-lg font-bold text-white">Parfait sur Mobile</h3>
+            <p class="text-sm text-slate-300">Boutons accessibles, textes lisibles et panier interactif pensés pour l'écran du téléphone.</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-2">
+            <div class="text-xl">🛠️</div>
+            <h3 class="text-lg font-bold text-white">Personnalisation Rapide</h3>
+            <p class="text-sm text-slate-300">Modifiez facilement vos textes, prix et informations clés selon vos besoins du moment.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- AVANTAGES -->
-    <section id="avantages" class="py-20 sm:py-28">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-accent">Pourquoi nous choisir</span>
-                <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                    Tout ce qu'il faut pour vendre avec sérieux et impact
-                </h2>
-                <p class="mt-4 text-zinc-400 text-sm sm:text-base">
-                    Chaque détail est conçu pour rassurer vos visiteurs dès les premières secondes et faciliter le passage à l'action.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Vitesse Instantanée</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        Architecture légère sans ralentissement. Vos pages s'affichent immédiatement, même sur connexion mobile 4G.
-                    </p>
-                </div>
-
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Design Mobile-First</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        La majorité du trafic vient du téléphone. Chaque bouton, carte et formulaire est calibré pour une navigation fluide.
-                    </p>
-                </div>
-
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Confiance & Crédibilité</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        Structure moderne pensée pour inspirer confiance dès le premier regard et réduire les hésitations avant l'achat.
-                    </p>
-                </div>
-
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">100% Personnalisable</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        Couleurs, textes, offres et visuels s'adaptent facilement à n'importe quelle marque, boutique ou activité.
-                    </p>
-                </div>
-
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Parcours d'Achat Fluide</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        Ajout au panier sans rechargement, calcul automatique du total et envoi direct de la demande de commande.
-                    </p>
-                </div>
-
-                <div class="glass-card glass-card-hover rounded-2xl p-7">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent mb-5">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Prêt pour le Partage & SEO</h3>
-                    <p class="mt-2.5 text-sm text-zinc-400 leading-relaxed">
-                        Structure HTML claire et propre pour un affichage rapide et un partage fluide sur tous les réseaux.
-                    </p>
-                </div>
-            </div>
+    <!-- Offres & Tarifs -->
+    <section id="offres" class="border-t border-white/10 py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-2xl mb-10">
+          <h2 class="text-3xl font-extrabold text-white">Offres & Tarifs</h2>
+          <p class="mt-2 text-sm text-slate-300">Ajoutez une offre au panier ou passez commande directement en quelques clics.</p>
         </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 flex flex-col justify-between space-y-6">
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold text-white">Essentiel</h3>
+              <p class="text-sm text-slate-300">Idéal pour lancer une page vitrine claire et rapide.</p>
+              <div class="pt-2 text-3xl font-extrabold text-white">99 $</div>
+            </div>
+            <button
+              type="button"
+              data-add-product
+              data-id="essentiel"
+              data-name="Offre Essentiel"
+              data-price="99"
+              class="w-full rounded-xl border border-white/15 bg-surface-700 py-3 text-sm font-bold text-white hover:bg-brand-600 transition cursor-pointer"
+            >
+              Ajouter au panier
+            </button>
+          </div>
+
+          <div class="rounded-2xl border-2 border-brand-500 bg-surface-800 p-6 flex flex-col justify-between space-y-6">
+            <div class="space-y-2">
+              <span class="inline-block rounded-full bg-brand-600/20 px-2.5 py-0.5 text-xs font-bold text-brand-400">Populaire</span>
+              <h3 class="text-lg font-bold text-white">Pack Signature Pro</h3>
+              <p class="text-sm text-slate-300">La formule complète avec mise en avant produit et panier interactif.</p>
+              <div id="tier-pro-price" class="pt-2 text-3xl font-extrabold text-white">149 $</div>
+            </div>
+            <button
+              type="button"
+              id="tier-pro-btn"
+              data-add-product
+              data-id="pack-signature"
+              data-name="Pack Signature Pro"
+              data-price="149"
+              class="w-full rounded-xl bg-brand-600 py-3 text-sm font-bold text-white hover:bg-brand-500 transition cursor-pointer"
+            >
+              Ajouter au panier
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 flex flex-col justify-between space-y-6">
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold text-white">Sur-Mesure</h3>
+              <p class="text-sm text-slate-300">Adaptation poussée, sections dédiées et accompagnement complet.</p>
+              <div class="pt-2 text-3xl font-extrabold text-white">249 $</div>
+            </div>
+            <button
+              type="button"
+              data-add-product
+              data-id="sur-mesure"
+              data-name="Offre Sur-Mesure"
+              data-price="249"
+              class="w-full rounded-xl border border-white/15 bg-surface-700 py-3 text-sm font-bold text-white hover:bg-brand-600 transition cursor-pointer"
+            >
+              Ajouter au panier
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- OFFRES & TARIFS -->
-    <section id="offres" class="py-20 sm:py-28 bg-zinc-900/30 border-t border-white/10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-accent">Nos Formules</span>
-                <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                    Choisissez la formule adaptée à votre projet
-                </h2>
-                <p class="mt-4 text-zinc-400 text-sm sm:text-base">
-                    Tarifs clairs et transparents. Ajoutez votre sélection au panier pour préparer votre commande.
-                </p>
-
-                <div class="mt-8 inline-flex rounded-xl border border-white/10 bg-zinc-950 p-1">
-                    <button id="plan-once-btn" class="rounded-lg btn-accent px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-all">
-                        Paiement Unique
-                    </button>
-                    <button id="plan-express-btn" class="rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold text-zinc-400 hover:text-white transition-all">
-                        Livraison Express 24h (+30%)
-                    </button>
-                </div>
+    <!-- Avis Clients -->
+    <section id="avis" class="border-t border-white/10 bg-surface-800/40 py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl font-extrabold text-white mb-8">Ils ont lancé leur projet avec succès</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-4">
+            <div class="text-amber-400 text-sm">★★★★★</div>
+            <p class="text-sm text-slate-300">« Résultat ultra propre et livré rapidement. L'affichage sur mobile est fluide et nos demandes clients ont augmenté dès la première semaine. »</p>
+            <div>
+              <div class="text-sm font-bold text-white">Youssef B.</div>
+              <div class="text-xs text-slate-400">Fondateur E-Commerce</div>
             </div>
+          </div>
 
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
-                <!-- [MODIFIABLE] Offre 1 -->
-                <div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Pack Essentiel</h3>
-                        <p class="mt-2 text-sm text-zinc-400">Idéal pour lancer rapidement une présence en ligne propre et crédible.</p>
-                        <div class="mt-6 flex items-baseline gap-1">
-                            <span class="price-val text-4xl font-extrabold text-white" data-base="79">79 $</span>
-                            <span class="text-sm text-zinc-500">/ complet</span>
-                        </div>
-
-                        <ul class="mt-8 space-y-3.5 text-sm text-zinc-300">
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Page vitrine 100% Responsive</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Personnalisation couleurs & marque</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Formulaire de contact fonctionnel</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Code source complet livré</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="addDynamicPlan('Pack Essentiel', 79)" class="mt-8 w-full rounded-xl border border-white/15 bg-zinc-900 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition-all">
-                        Sélectionner Essentiel
-                    </button>
-                </div>
-
-                <!-- [MODIFIABLE] Offre 2 (Mise en avant) -->
-                <div class="glass-card relative rounded-3xl p-8 flex flex-col justify-between border-2 border-accent shadow-2xl">
-                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                        <span class="rounded-full btn-accent px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg">
-                            Le plus populaire
-                        </span>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Pack Signature Pro</h3>
-                        <p class="mt-2 text-sm text-zinc-400">La solution complète haute conversion pour marques et boutiques.</p>
-                        <div class="mt-6 flex items-baseline gap-1">
-                            <span class="price-val text-4xl font-extrabold text-white" data-base="149">149 $</span>
-                            <span class="text-sm text-zinc-500">/ complet</span>
-                        </div>
-
-                        <ul class="mt-8 space-y-3.5 text-sm text-zinc-200">
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Tout le Pack Essentiel inclus</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Système de panier interactif intégré</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Sections orientées conversion</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Optimisation vitesse & structure SEO</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>2 ajustements inclus sous 48h</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="addDynamicPlan('Pack Signature Pro', 149)" class="mt-8 w-full rounded-xl btn-accent py-3.5 text-sm font-bold text-white shadow-lg">
-                        Commander Signature Pro
-                    </button>
-                </div>
-
-                <!-- [MODIFIABLE] Offre 3 -->
-                <div class="glass-card glass-card-hover rounded-3xl p-8 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Édition Sur-Mesure</h3>
-                        <p class="mt-2 text-sm text-zinc-400">Configuration avancée et intégrations adaptées à vos besoins.</p>
-                        <div class="mt-6 flex items-baseline gap-1">
-                            <span class="price-val text-4xl font-extrabold text-white" data-base="249">249 $</span>
-                            <span class="text-sm text-zinc-500">/ projet</span>
-                        </div>
-
-                        <ul class="mt-8 space-y-3.5 text-sm text-zinc-300">
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Adaptation complète à l'identité visuelle</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Connexion boutique / liens de paiement</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Modules interactifs et animations</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="h-4 w-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                <span>Support prioritaire 30 jours</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <button onclick="addDynamicPlan('Édition Sur-Mesure', 249)" class="mt-8 w-full rounded-xl border border-white/15 bg-zinc-900 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition-all">
-                        Choisir Sur-Mesure
-                    </button>
-                </div>
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-4">
+            <div class="text-amber-400 text-sm">★★★★★</div>
+            <p class="text-sm text-slate-300">« Le design inspire confiance tout de suite. Tout est clair, lisible et facile à ajuster selon nos campagnes. »</p>
+            <div>
+              <div class="text-sm font-bold text-white">Chloé M.</div>
+              <div class="text-xs text-slate-400">Créatrice de marque</div>
             </div>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 space-y-4">
+            <div class="text-amber-400 text-sm">★★★★★</div>
+            <p class="text-sm text-slate-300">« Échanges simples et efficaces, mise en ligne rapide et bouton de commande direct sans prise de tête. »</p>
+            <div>
+              <div class="text-sm font-bold text-white">Mehdi K.</div>
+              <div class="text-xs text-slate-400">Entrepreneur Digital</div>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- TÉMOIGNAGES CLIENTS (FACILES À PERSONNALISER) -->
-    <section id="avis" class="py-20 sm:py-28">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-accent">Retours Clients</span>
-                <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                    Ils ont lancé leur projet avec succès
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-                <!-- [MODIFIABLE] Témoignage 1 -->
-                <div class="glass-card rounded-2xl p-7">
-                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">★★★★★</div>
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        "Résultat propre et livré rapidement. Mes visiteurs sur mobile trouvent le site fluide et les demandes de contact ont augmenté dès la première semaine."
-                    </p>
-                    <div class="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-accent font-bold text-xs">
-                            AL
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-white">Antoine L.</p>
-                            <p class="text-xs text-zinc-500">Fondateur Boutique en Ligne</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- [MODIFIABLE] Témoignage 2 -->
-                <div class="glass-card rounded-2xl p-7">
-                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">★★★★★</div>
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        "Mise en page claire, moderne et facile à parcourir. La présentation met directement nos offres en valeur sans surcharge inutile."
-                    </p>
-                    <div class="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-accent font-bold text-xs">
-                            CM
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-white">Camille M.</p>
-                            <p class="text-xs text-zinc-500">Responsable Marque</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- [MODIFIABLE] Témoignage 3 -->
-                <div class="glass-card rounded-2xl p-7">
-                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">★★★★★</div>
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        "Exécution rapide, échanges directs et un rendu prêt à être mis en ligne et partagé immédiatement avec nos clients."
-                    </p>
-                    <div class="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
-                        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-accent font-bold text-xs">
-                            YD
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-white">Yanis D.</p>
-                            <p class="text-xs text-zinc-500">Entrepreneur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 sm:py-24 bg-zinc-900/30 border-t border-white/10">
-        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-accent">Questions Fréquentes</span>
-                <h2 class="mt-3 text-3xl font-extrabold text-white">Tout ce que vous devez savoir</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div class="faq-item glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-4">
-                        <h3 class="text-sm sm:text-base font-bold text-white">En combien de temps le site est-il prêt ?</h3>
-                        <span class="faq-icon text-xl font-bold text-zinc-400 transition-transform duration-200">+</span>
-                    </div>
-                    <div class="faq-content">
-                        <p class="pt-3 text-sm text-zinc-400 leading-relaxed">
-                            La configuration et la personnalisation prennent généralement entre 24 et 72 heures selon la formule sélectionnée et les informations fournies.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-4">
-                        <h3 class="text-sm sm:text-base font-bold text-white">Le site est-il compatible avec un hébergement web ou une boutique ?</h3>
-                        <span class="faq-icon text-xl font-bold text-zinc-400 transition-transform duration-200">+</span>
-                    </div>
-                    <div class="faq-content">
-                        <p class="pt-3 text-sm text-zinc-400 leading-relaxed">
-                            Oui, la page est autonome et peut être hébergée facilement ou reliée à vos liens de boutique et de paiement.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-4">
-                        <h3 class="text-sm sm:text-base font-bold text-white">L'affichage fonctionne-t-il bien sur téléphone ?</h3>
-                        <span class="faq-icon text-xl font-bold text-zinc-400 transition-transform duration-200">+</span>
-                    </div>
-                    <div class="faq-content">
-                        <p class="pt-3 text-sm text-zinc-400 leading-relaxed">
-                            Oui, l'interface est conçue pour s'adapter automatiquement aux smartphones, tablettes et écrans d'ordinateur.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item glass-card rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-4">
-                        <h3 class="text-sm sm:text-base font-bold text-white">Comment finaliser une commande ?</h3>
-                        <span class="faq-icon text-xl font-bold text-zinc-400 transition-transform duration-200">+</span>
-                    </div>
-                    <div class="faq-content">
-                        <p class="pt-3 text-sm text-zinc-400 leading-relaxed">
-                            Ajoutez votre formule au panier puis validez pour pré-remplir le formulaire de commande ci-dessous avec vos coordonnées.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="faq" class="border-t border-white/10 py-16">
+      <div class="mx-auto max-w-4xl px-4 space-y-4">
+        <h2 class="text-3xl font-extrabold text-white mb-6">Questions fréquentes</h2>
+        <details class="rounded-xl border border-white/10 bg-surface-800 p-4">
+          <summary class="cursor-pointer font-semibold text-white">Puis-je modifier les textes et les prix après la mise en ligne ?</summary>
+          <p class="mt-2 text-sm text-slate-300">Oui, vous pouvez mettre à jour vos informations directement ou utiliser le panneau d'édition rapide.</p>
+        </details>
+        <details class="rounded-xl border border-white/10 bg-surface-800 p-4">
+          <summary class="cursor-pointer font-semibold text-white">Le site fonctionne-t-il sur téléphone et tablette ?</summary>
+          <p class="mt-2 text-sm text-slate-300">Oui, la mise en page s'adapte automatiquement aux écrans mobiles, tablettes et ordinateurs.</p>
+        </details>
+      </div>
     </section>
 
-    <!-- CONTACT & COMMANDE -->
-    <section id="contact" class="py-20 sm:py-28">
-        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-2xl">
-                <div class="text-center max-w-xl mx-auto mb-10">
-                    <span class="text-xs font-bold uppercase tracking-widest text-accent">Commande & Contact</span>
-                    <h2 class="mt-2 text-3xl font-extrabold text-white">Prêt à lancer votre projet ?</h2>
-                    <p class="mt-3 text-sm text-zinc-400">
-                        Complétez ce formulaire pour envoyer votre demande ou finaliser votre sélection du panier.
-                    </p>
-                </div>
+    <!-- Formulaire de Commande Directe -->
+    <section id="commander" class="border-t border-white/10 bg-surface-800/60 py-16 pb-28">
+      <div class="mx-auto max-w-3xl px-4">
+        <div class="rounded-2xl border border-white/10 bg-surface-800 p-6 sm:p-8 space-y-6">
+          <div>
+            <h2 class="text-2xl font-extrabold text-white sm:text-3xl">Passer commande</h2>
+            <p class="mt-1 text-sm text-slate-300">Remplissez vos coordonnées pour valider votre demande ou votre panier.</p>
+          </div>
 
-                <form id="contact-form" class="space-y-5" novalidate>
-                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <div>
-                            <label for="client-name" class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Nom / Entreprise *</label>
-                            <input type="text" id="client-name" required placeholder="Votre nom ou marque" class="w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-accent focus:outline-none">
-                        </div>
-                        <div>
-                            <label for="client-contact" class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Email ou Contact *</label>
-                            <input type="text" id="client-contact" required placeholder="nom@domaine.com" class="w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-accent focus:outline-none">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="client-pack" class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Formule sélectionnée</label>
-                        <select id="client-pack" class="w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-sm text-white focus:border-accent focus:outline-none">
-                            <option value="Pack Signature Pro (149 $)">Pack Signature Pro — 149 $</option>
-                            <option value="Pack Essentiel (79 $)">Pack Essentiel — 79 $</option>
-                            <option value="Édition Sur-Mesure (249 $)">Édition Sur-Mesure — 249 $</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="client-message" class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Détails de la commande *</label>
-                        <textarea id="client-message" rows="4" required placeholder="Précisez vos besoins, couleurs souhaitées ou questions..." class="w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-accent focus:outline-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full rounded-xl btn-accent py-4 text-sm font-bold text-white shadow-lg">
-                        Envoyer la demande
-                    </button>
-
-                    <div id="form-feedback" class="hidden rounded-xl border p-4 text-sm font-medium text-center"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-white/10 bg-zinc-950 py-12">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-2.5">
-                <div class="flex h-8 w-8 items-center justify-center rounded-lg btn-accent text-white font-bold">
-                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <span class="brand-name text-base font-extrabold text-white">NOVA STUDIO</span>
+          <form id="order-form" class="space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="client-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Nom ou entreprise</label>
+                <input id="client-name" type="text" required placeholder="Ex. Studio Nord" class="w-full rounded-xl border border-white/15 bg-surface-900 px-3.5 py-2.5 text-sm text-white focus:border-brand-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="client-contact" class="block text-xs font-semibold text-slate-300 mb-1.5">Email ou téléphone</label>
+                <input id="client-contact" type="text" required placeholder="contact@exemple.com" class="w-full rounded-xl border border-white/15 bg-surface-900 px-3.5 py-2.5 text-sm text-white focus:border-brand-400 focus:outline-none" />
+              </div>
             </div>
 
-            <p class="text-xs text-zinc-500 text-center">
-                © 2026 <span class="brand-name">NOVA STUDIO</span>. Tous droits réservés.
-            </p>
-
-            <div class="flex items-center gap-5 text-xs font-medium text-zinc-400">
-                <a href="#avantages" class="hover:text-white">Avantages</a>
-                <a href="#offres" class="hover:text-white">Offres</a>
-                <a href="#contact" class="hover:text-white">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- TIROIR PANIER LATÉRAL -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
-        <div id="cart-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-sm"></div>
-        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-zinc-950 border-l border-white/10 p-6 flex flex-col justify-between shadow-2xl">
             <div>
-                <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                    <h3 class="text-lg font-extrabold text-white">Votre Panier</h3>
-                    <button id="close-cart-btn" class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-900 hover:text-white">✕</button>
-                </div>
-                <div id="cart-items-container" class="mt-6 space-y-4 max-h-[55vh] overflow-y-auto pr-1"></div>
+              <label for="client-notes" class="block text-xs font-semibold text-slate-300 mb-1.5">Détails / personnalisation souhaitée</label>
+              <textarea id="client-notes" rows="3" placeholder="Couleurs, nom de marque, options..." class="w-full rounded-xl border border-white/15 bg-surface-900 px-3.5 py-2.5 text-sm text-white focus:border-brand-400 focus:outline-none"></textarea>
             </div>
 
-            <div class="border-t border-white/10 pt-5">
-                <div class="flex items-center justify-between text-base font-bold text-white mb-4">
-                    <span>Total estimé</span>
-                    <span id="cart-total" class="text-xl text-accent">0 $</span>
-                </div>
-                <button id="checkout-btn" class="w-full rounded-xl btn-accent py-3.5 text-sm font-bold text-white shadow-lg">
-                    Valider la sélection
-                </button>
-            </div>
+            <button type="submit" class="w-full rounded-xl bg-brand-600 py-3.5 text-sm font-bold text-white hover:bg-brand-500 transition cursor-pointer">
+              Valider la commande
+            </button>
+          </form>
+
+          <div id="order-confirmation" class="hidden rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-200"></div>
         </div>
-    </div>
+      </div>
+    </section>
+  </main>
 
-    <!-- [OPTIONNEL - RETIRABLE POUR LIVRAISON FINALE] PANNEAU ÉDITION RAPIDE -->
-    <div id="quick-edit-wrapper" class="fixed bottom-4 right-4 z-40">
-        <button id="toggle-customizer" class="flex items-center gap-2 rounded-full border border-white/15 bg-zinc-900/95 px-4 py-2.5 text-xs font-bold text-white shadow-2xl backdrop-blur-md hover:border-accent transition-all">
-            <span class="h-2.5 w-2.5 rounded-full btn-accent"></span>
-            <span>Édition rapide</span>
+  <!-- Tiroir Panier -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div id="cart-backdrop" class="fixed inset-0 bg-black/70"></div>
+    <aside class="fixed right-0 top-0 h-full w-full max-w-md border-l border-white/10 bg-surface-800 p-6 flex flex-col justify-between z-10">
+      <div class="space-y-4 overflow-y-auto">
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <h3 class="text-lg font-bold text-white">Votre Panier</h3>
+          <button type="button" id="close-cart-btn" class="rounded-lg border border-white/15 px-3 py-1 text-xs font-semibold text-slate-200 hover:bg-surface-700 cursor-pointer">
+            Fermer
+          </button>
+        </div>
+        <div id="cart-items" class="space-y-3 text-sm text-slate-300">
+          <p class="text-slate-400">Votre panier est vide.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-4 space-y-4">
+        <div class="flex items-center justify-between text-base font-bold text-white">
+          <span>Total</span>
+          <span id="cart-total">0 $</span>
+        </div>
+        <button type="button" id="checkout-from-cart-btn" class="w-full rounded-xl bg-brand-600 py-3 text-sm font-bold text-white hover:bg-brand-500 transition cursor-pointer">
+          Commander maintenant
         </button>
+      </div>
+    </aside>
+  </div>
 
-        <div id="customizer-panel" class="hidden mt-2 w-72 rounded-2xl border border-white/15 bg-zinc-950/95 p-4 shadow-2xl backdrop-blur-xl">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Édition rapide</span>
-                <button id="close-customizer" class="text-xs text-zinc-500 hover:text-white">Fermer</button>
-            </div>
+  <!-- Édition Rapide -->
+  <div id="quick-edit-wrapper" class="fixed bottom-4 right-4 z-40">
+    <button type="button" id="toggle-edit-btn" class="inline-flex items-center gap-2 rounded-full border border-brand-400/40 bg-surface-800 px-4 py-2.5 text-xs font-bold text-white shadow-xl hover:bg-surface-700 transition cursor-pointer">
+      <span class="h-2 w-2 rounded-full bg-brand-400"></span>
+      <span>Édition rapide</span>
+    </button>
 
-            <label class="block text-xs text-zinc-400 mb-1">Nom de la marque</label>
-            <input type="text" id="brand-input" value="NOVA STUDIO" class="w-full rounded-lg border border-white/10 bg-zinc-900 px-3 py-2 text-xs text-white focus:border-accent focus:outline-none mb-3">
-
-            <label class="block text-xs text-zinc-400 mb-2">Couleur principale</label>
-            <div class="flex items-center gap-2">
-                <button onclick="setThemeColor('#6366f1', '#4f46e5', 'rgba(99, 102, 241, 0.14)')" class="h-7 w-7 rounded-full bg-indigo-500 border-2 border-white/40" title="Indigo"></button>
-                <button onclick="setThemeColor('#10b981', '#059669', 'rgba(16, 185, 129, 0.14)')" class="h-7 w-7 rounded-full bg-emerald-500 border-2 border-white/40" title="Émeraude"></button>
-                <button onclick="setThemeColor('#f43f5e', '#e11d48', 'rgba(244, 63, 94, 0.14)')" class="h-7 w-7 rounded-full bg-rose-500 border-2 border-white/40" title="Rubis"></button>
-                <button onclick="setThemeColor('#f59e0b', '#d97706', 'rgba(245, 158, 11, 0.14)')" class="h-7 w-7 rounded-full bg-amber-500 border-2 border-white/40" title="Ambre"></button>
-                <button onclick="setThemeColor('#06b6d4', '#0891b2', 'rgba(6, 182, 212, 0.14)')" class="h-7 w-7 rounded-full bg-cyan-500 border-2 border-white/40" title="Cyan"></button>
-            </div>
-        </div>
+    <div id="quick-edit-panel" class="hidden mt-2 w-72 rounded-2xl border border-white/15 bg-surface-800 p-4 shadow-2xl space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-400">Édition rapide</span>
+        <button type="button" id="close-edit-btn" class="text-xs text-slate-400 hover:text-white cursor-pointer">✕</button>
+      </div>
+      <div>
+        <label for="edit-brand-input" class="block text-xs text-slate-300 mb-1">Nom de la marque</label>
+        <input id="edit-brand-input" type="text" value="NOVA STUDIO" class="w-full rounded-lg border border-white/15 bg-surface-900 px-2.5 py-1.5 text-xs text-white" />
+      </div>
+      <div>
+        <label for="edit-price-input" class="block text-xs text-slate-300 mb-1">Prix offre phare ($)</label>
+        <input id="edit-price-input" type="number" value="149" min="1" class="w-full rounded-lg border border-white/15 bg-surface-900 px-2.5 py-1.5 text-xs text-white" />
+      </div>
+      <button type="button" id="apply-edit-btn" class="w-full rounded-lg bg-brand-600 py-2 text-xs font-bold text-white hover:bg-brand-500 transition cursor-pointer">
+        Appliquer
+      </button>
     </div>
+  </div>
 
-    <!-- NOTIFICATION -->
-    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden rounded-full border border-white/15 bg-zinc-900 px-5 py-2.5 text-xs font-semibold text-white shadow-2xl">
-        Mis à jour
-    </div>
+  <script>
+    (function () {
+      const cart = [];
 
-    <script>
-        // Menu mobile
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+      const cartDrawer = document.getElementById('cart-drawer');
+      const cartBackdrop = document.getElementById('cart-backdrop');
+      const openCartBtn = document.getElementById('open-cart-btn');
+      const closeCartBtn = document.getElementById('close-cart-btn');
+      const cartItemsEl = document.getElementById('cart-items');
+      const cartCountEl = document.getElementById('cart-count');
+      const cartTotalEl = document.getElementById('cart-total');
+      const checkoutFromCartBtn = document.getElementById('checkout-from-cart-btn');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+      function openCart() {
+        cartDrawer.classList.remove('hidden');
+      }
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+      function closeCart() {
+        cartDrawer.classList.add('hidden');
+      }
 
-        // Sélecteur standard / express
-        let isExpress = false;
-        const planOnceBtn = document.getElementById('plan-once-btn');
-        const planExpressBtn = document.getElementById('plan-express-btn');
-        const priceVals = document.querySelectorAll('.price-val');
+      function renderCart() {
+        const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-        function updateDisplayedPrices() {
-            priceVals.forEach(el => {
-                const base = parseInt(el.dataset.base, 10);
-                const finalPrice = isExpress ? Math.round(base * 1.3) : base;
-                el.textContent = `${finalPrice} $`;
-            });
+        cartCountEl.textContent = String(totalQty);
+        cartTotalEl.textContent = `${totalPrice} $`;
+
+        if (cart.length === 0) {
+          cartItemsEl.innerHTML = '<p class="text-slate-400">Votre panier est vide.</p>';
+          return;
         }
 
-        planOnceBtn.addEventListener('click', () => {
-            isExpress = false;
-            planOnceBtn.classList.add('btn-accent', 'text-white');
-            planOnceBtn.classList.remove('text-zinc-400');
-            planExpressBtn.classList.remove('btn-accent', 'text-white');
-            planExpressBtn.classList.add('text-zinc-400');
-            updateDisplayedPrices();
-        });
-
-        planExpressBtn.addEventListener('click', () => {
-            isExpress = true;
-            planExpressBtn.classList.add('btn-accent', 'text-white');
-            planExpressBtn.classList.remove('text-zinc-400');
-            planOnceBtn.classList.remove('btn-accent', 'text-white');
-            planOnceBtn.classList.add('text-zinc-400');
-            updateDisplayedPrices();
-        });
-
-        // Panier interactif
-        let cart = [];
-        const cartDrawer = document.getElementById('cart-drawer');
-        const openCartBtn = document.getElementById('open-cart-btn');
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        const cartOverlay = document.getElementById('cart-overlay');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalEl = document.getElementById('cart-total');
-        const cartBadge = document.getElementById('cart-badge');
-        const toast = document.getElementById('toast');
-
-        function showToast(message) {
-            toast.textContent = message;
-            toast.classList.remove('hidden');
-            clearTimeout(window.toastTimer);
-            window.toastTimer = setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 2400);
-        }
-
-        function addDynamicPlan(name, basePrice) {
-            const finalPrice = isExpress ? Math.round(basePrice * 1.3) : basePrice;
-            const label = isExpress ? `${name} (Express 24h)` : name;
-            addToCart(label, finalPrice, isExpress ? 'Livraison prioritaire 24h' : 'Livraison standard');
-        }
-
-        function addToCart(name, price, desc) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ name, price, desc, qty: 1 });
-            }
-            renderCart();
-            showToast(`${name} ajouté au panier`);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            renderCart();
-        }
-
-        function renderCart() {
-            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-
-            cartBadge.textContent = totalQty;
-            cartTotalEl.textContent = `${totalPrice} $`;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 text-center">
-                        <p class="text-sm text-zinc-400">Votre panier est vide.</p>
-                        <p class="text-xs text-zinc-500 mt-1">Ajoutez une formule pour préparer votre commande.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            cartItemsContainer.innerHTML = cart.map((item, idx) => `
-                <div class="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-900/80 p-4">
-                    <div>
-                        <p class="text-sm font-bold text-white">${item.name}</p>
-                        <p class="text-xs text-zinc-400">${item.desc} • Qté: ${item.qty}</p>
-                        <p class="text-sm font-extrabold text-accent mt-1">${item.price * item.qty} $</p>
-                    </div>
-                    <button onclick="removeFromCart(${idx})" class="rounded-lg bg-zinc-800 px-2.5 py-1.5 text-xs text-zinc-400 hover:text-rose-400">
-                        Retirer
-                    </button>
+        cartItemsEl.innerHTML = cart
+          .map(
+            (item, index) => `
+              <div class="flex items-center justify-between rounded-xl border border-white/10 bg-surface-900 p-3">
+                <div>
+                  <div class="font-semibold text-white">${item.name}</div>
+                  <div class="text-xs text-slate-400">${item.price} $ × ${item.qty}</div>
                 </div>
-            `).join('');
-        }
+                <button type="button" data-remove-index="${index}" class="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-rose-300 hover:bg-rose-500/10 cursor-pointer">
+                  Retirer
+                </button>
+              </div>
+            `
+          )
+          .join('');
 
-        openCartBtn.addEventListener('click', () => {
+        cartItemsEl.querySelectorAll('[data-remove-index]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const idx = Number(btn.getAttribute('data-remove-index'));
+            cart.splice(idx, 1);
             renderCart();
-            cartDrawer.classList.remove('hidden');
+          });
         });
+      }
 
-        [closeCartBtn, cartOverlay].forEach(el => {
-            el.addEventListener('click', () => cartDrawer.classList.add('hidden'));
+      document.querySelectorAll('[data-add-product]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          const name = btn.getAttribute('data-name');
+          const price = Number(btn.getAttribute('data-price')) || 0;
+          const existing = cart.find((item) => item.id === id);
+
+          if (existing) {
+            existing.qty += 1;
+            existing.price = price;
+          } else {
+            cart.push({ id, name, price, qty: 1 });
+          }
+
+          renderCart();
+          openCart();
         });
+      });
 
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            if (cart.length === 0) {
-                showToast('Ajoutez d’abord une offre au panier');
-                return;
-            }
-            const summary = cart.map(i => `${i.qty}x ${i.name}`).join(', ');
-            document.getElementById('client-message').value = `Commande souhaitée : ${summary}.`;
-            cartDrawer.classList.add('hidden');
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            showToast('Sélection ajoutée au formulaire');
-        });
+      openCartBtn.addEventListener('click', openCart);
+      closeCartBtn.addEventListener('click', closeCart);
+      cartBackdrop.addEventListener('click', closeCart);
 
-        // Accordéon FAQ
-        function toggleFaq(element) {
-            const isActive = element.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) {
-                element.classList.add('active');
-            }
+      checkoutFromCartBtn.addEventListener('click', () => {
+        closeCart();
+        const orderSection = document.getElementById('commander');
+        orderSection.scrollIntoView({ behavior: 'smooth' });
+        const notesField = document.getElementById('client-notes');
+        if (cart.length > 0) {
+          const summary = cart.map((i) => `${i.name} (x${i.qty})`).join(', ');
+          notesField.value = `Articles sélectionnés : ${summary}`;
+        }
+      });
+
+      // Formulaire de commande
+      const orderForm = document.getElementById('order-form');
+      const orderConfirmation = document.getElementById('order-confirmation');
+      orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameVal = document.getElementById('client-name').value.trim();
+        orderConfirmation.textContent = `Commande enregistrée pour ${nameVal}. Vous pouvez maintenant envoyer ou traiter cette demande.`;
+        orderConfirmation.classList.remove('hidden');
+        orderForm.reset();
+      });
+
+      // Édition rapide
+      const toggleEditBtn = document.getElementById('toggle-edit-btn');
+      const closeEditBtn = document.getElementById('close-edit-btn');
+      const quickEditPanel = document.getElementById('quick-edit-panel');
+      const applyEditBtn = document.getElementById('apply-edit-btn');
+
+      toggleEditBtn.addEventListener('click', () => {
+        quickEditPanel.classList.toggle('hidden');
+      });
+
+      closeEditBtn.addEventListener('click', () => {
+        quickEditPanel.classList.add('hidden');
+      });
+
+      applyEditBtn.addEventListener('click', () => {
+        const brandVal = document.getElementById('edit-brand-input').value.trim();
+        const priceVal = Number(document.getElementById('edit-price-input').value);
+
+        if (brandVal) {
+          document.getElementById('site-brand').textContent = brandVal;
+          document.title = `${brandVal} — Solutions Digitales & Boutique`;
         }
 
-        // Formulaire contact / commande
-        const contactForm = document.getElementById('contact-form');
-        const formFeedback = document.getElementById('form-feedback');
+        if (priceVal > 0) {
+          document.getElementById('featured-price-display').textContent = `${priceVal} $`;
+          document.getElementById('tier-pro-price').textContent = `${priceVal} $`;
+          const proBtn = document.getElementById('tier-pro-btn');
+          proBtn.setAttribute('data-price', String(priceVal));
+          document.querySelector('[data-add-product][data-id="pack-signature"]').setAttribute('data-price', String(priceVal));
+        }
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('client-name').value.trim();
-            const contact = document.getElementById('client-contact').value.trim();
-            const message = document.getElementById('client-message').value.trim();
-
-            formFeedback.classList.remove('hidden', 'border-rose-500/30', 'bg-rose-500/10', 'text-rose-300', 'border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-300');
-
-            if (!name || !contact || !message) {
-                formFeedback.textContent = 'Merci de remplir tous les champs obligatoires (*).';
-                formFeedback.classList.add('border-rose-500/30', 'bg-rose-500/10', 'text-rose-300');
-                return;
-            }
-
-            formFeedback.textContent = `Merci ${name}. Votre demande a bien été enregistrée pour ${contact}.`;
-            formFeedback.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-300');
-            contactForm.reset();
-        });
-
-        // Édition rapide (marque & couleur)
-        const toggleCustomizer = document.getElementById('toggle-customizer');
-        const customizerPanel = document.getElementById('customizer-panel');
-        const closeCustomizer = document.getElementById('close-customizer');
-        const brandInput = document.getElementById('brand-input');
-
-        if (toggleCustomizer && customizerPanel && closeCustomizer && 
+        quickEditPanel.classList.add('hidden');
+      });
+    })();
+  </script>
+</body>
+</html>
